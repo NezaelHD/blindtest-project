@@ -1,0 +1,20 @@
+{
+    "name": "cnam-hcc/are-you-blinded",
+    "description": "Blind test project for the CNAM of Toulon.",
+    "autoload": {
+        "files": [
+            "src/app/config/constants.php",
+            "src/app/config/database_config.php",
+            "src/app/utils/Requests.php",
+            "src/app/utils/Base.php"],
+        "classmap": [
+            "src/"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Nezael"
+        }
+    ],
+    "require": {}
+}

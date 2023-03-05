@@ -1,0 +1,29 @@
+services:
+  db:
+    image: mariadb:10
+    container_name: database
+    restart: always
+    ports: ['3306:3306']
+    volumes:
+      - ./storage:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+      MYSQL_ROOT_PASSWORD: root
+
+  app:
+    build: './Docker/php'
+    container_name: app
+    restart: always
+    depends_on: ['db']
+    ports: ['80:80']
+    links: ['db:db']
+    volumes:
+      - '.:/var/www/html'
+    environment:
+      MYSQL_DB_HOST: db
+      MYSQL_DATABASE: app
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
