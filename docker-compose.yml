@@ -27,3 +27,16 @@ services:
       MYSQL_DATABASE: app
       MYSQL_USER: user
       MYSQL_PASSWORD: user
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8080:80
