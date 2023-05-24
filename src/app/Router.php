@@ -1,8 +1,11 @@
 <?php
 
+use App\middlewares\AuthMiddleware;
+
 class Router {
     private $routes = [];
     private $params = [];
+    private $middlewares = [];
 
     /**
      * @param string $file
@@ -15,6 +18,7 @@ class Router {
     {
         $router = new static;
         require_once $file;
+        $router->loadMiddlewares();
 
         return $router;
     }
@@ -52,6 +56,8 @@ class Router {
      */
 	public function direct($uri, $method)
     {
+        $this->handleMiddlewares();
+
         if (empty($uri))
         {
             return $this->callAction('Index', 'get');
@@ -86,5 +92,18 @@ class Router {
         $controller = new $controller;
 
         return $controller->$action();
+    }
+
+    private function loadMiddlewares(): void {
+        $this->middlewares = array(
+            get_class(AuthMiddleware::class),
+        );
+    }
+
+    private function handleMiddlewares()
+    {
+        foreach ($this->middlewares as $middleware) {
+            $middleware();
+        }
     }
 }
