@@ -6,3 +6,5 @@ function dd($toDd){
     var_dump($toDd);
     die();
 }
+
+$request = $_REQUEST;
