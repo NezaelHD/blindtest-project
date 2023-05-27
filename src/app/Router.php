@@ -1,6 +1,6 @@
 <?php
 
-use App\middlewares\AuthMiddleware;
+use App\Middlewares\AuthMiddleware;
 
 class Router {
     private $routes = [];
@@ -96,14 +96,15 @@ class Router {
 
     private function loadMiddlewares(): void {
         $this->middlewares = array(
-            get_class(AuthMiddleware::class),
+            "App\\Middlewares\\".(new ReflectionClass(AuthMiddleware::class))->getShortName(),
         );
     }
 
     private function handleMiddlewares()
     {
         foreach ($this->middlewares as $middleware) {
-            $middleware();
+            $middlewareInstance = new $middleware();
+            $middlewareInstance->handle();
         }
     }
 }

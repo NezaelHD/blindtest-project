@@ -1,6 +1,6 @@
 <?php
 
-namespace App\middlewares;
+namespace App\Middlewares;
 
 use App\Repository\UserRepository;
 
@@ -8,15 +8,16 @@ class AuthMiddleware
 {
     private UserRepository $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct()
     {
-        $this->userRepository = $userRepository;
+        $this->userRepository = new UserRepository();
     }
 
-    public function __invoke()
+    public function handle()
     {
         if ($this->userIsLoggedIn()) {
             $_SESSION['user'] = $this->getUserData();
+            $_SESSION['logged_in'] = true;
         } else {
             unset($_SESSION['user']);
         }
@@ -29,16 +30,10 @@ class AuthMiddleware
 
     private function getUserData()
     {
-        $user = $this->userRepository->find($_SESSION['user_id']);
+        $user = $this->userRepository->find($_SESSION['user']['id']);
 
         if ($user) {
-            return [
-                'user_id' => $user->getId(),
-                'name' => $user->getName(),
-                'email' => $user->getEmail(),
-                'avatar' => $user->getAvatar(),
-                'logged_in' => true,
-            ];
+            return $user->toArray();
         } else {
             return [];
         }

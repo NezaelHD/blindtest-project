@@ -2,13 +2,13 @@
 
 namespace Models;
 
-     class User {
-        private int $id = -1;
-        private string $email;
-        private string $name;
-        private string $password;
-        private bool $isAdmin;
-        private string $avatar;
+     class User extends Model {
+        protected int $id = -1;
+        protected string $email;
+        protected string $name;
+        protected string $password;
+        protected bool $isAdmin;
+        protected string $avatar;
 
         public function __construct(string $email, string $name, string $password, bool $isAdmin, string $avatar, int $id){
             $this->email = $email;
