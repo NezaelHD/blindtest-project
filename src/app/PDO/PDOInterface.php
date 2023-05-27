@@ -16,6 +16,15 @@ interface PDOInterface {
     public function find(int $id);
 
     /**
+     * @param string $field
+     * @param mixed $value
+     * @return mixed
+     *
+     * Method needed to find a row of the model based on the field selected.
+     */
+    public function findBy(string $field, $value);
+
+    /**
      * @return mixed
      *
      * Method needed to find all rows of the model.
