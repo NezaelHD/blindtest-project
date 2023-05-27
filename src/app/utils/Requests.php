@@ -19,3 +19,9 @@ function getMethod()
     $method = $_SERVER['REQUEST_METHOD'];
     return $method;
 }
+
+function getPostRequest(){
+    return array_map(function($value) {
+        return htmlspecialchars(trim($value));
+    }, $_POST);
+}
