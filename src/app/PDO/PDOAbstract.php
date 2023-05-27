@@ -107,6 +107,29 @@ abstract class PDOAbstract implements PDOInterface {
 	}
 
     /**
+     * @param string $field
+     * @param mixed $value
+     * @return mixed
+     *
+     * FindBy methods which retrieve values based on the column on where searching and the value to search.
+     */
+    public function findBy(string $field, $value)
+    {
+        try {
+            $query = $this->connection->prepare("SELECT * FROM " . $this->getTableName() . " WHERE " . $field . " = :value");
+            $query->execute(['value' => $value]);
+            $results = $query->fetchAll();
+            $entities = [];
+            foreach ($results as $result) {
+                $entities[] = $this->buildModel($result);
+            }
+            return $entities;
+        } catch (\Exception $e) {
+            dd($e);
+        }
+    }
+
+    /**
      * @return array
      *
      * findAll methods which retrieve all the values in the DB.
