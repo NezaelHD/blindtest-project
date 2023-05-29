@@ -136,9 +136,10 @@ abstract class PDOAbstract implements PDOInterface {
      */
     public function findAll() {
         $entities = [];
+        $this->findAllPS->execute();
 		try {
 
-            $results = $this->findAllPS->fetch();
+            $results = $this->findAllPS->fetchAll();
 			foreach ($results as $result){
                 $entities[] = $this->buildModel($result);
             }
