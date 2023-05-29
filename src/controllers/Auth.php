@@ -52,7 +52,6 @@ class Auth extends Controller
     }
 
     public function logout() {
-        session_start();
         $_SESSION = array();
 
         if (ini_get("session.use_cookies")) {
