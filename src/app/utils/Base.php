@@ -14,6 +14,11 @@ function dd($toDd){
  * @return array
  */
 function getRequest() {
+    $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+    if($contentType === 'application/json') {
+        return json_decode(file_get_contents("php://input"), true);
+    }
     return $_REQUEST;
 }
 
@@ -52,4 +57,17 @@ function getUrl(): string {
  */
 function redirect(string $route): void {
     header("location:".getUrl().$route);
+}
+
+/**
+ * Récupère l'utilisateur connecté si il y en à un retourne false sinon.
+ * @return false|array
+ */
+function getConnectedUser(): array|false{
+    if(isset($_SESSION['logged_in'])){
+        return $_SESSION['user'];
+    }
+    else{
+        return false;
+    }
 }
