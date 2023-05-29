@@ -5,7 +5,9 @@ services:
     restart: always
     ports: ['3306:3306']
     volumes:
+      - ./Docker/db/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
       - ./storage:/var/lib/mysql
+      - ./Docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
     environment:
       MYSQL_DATABASE: app
       MYSQL_USER: user

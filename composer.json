@@ -2,6 +2,13 @@
     "name": "cnam-hcc/are-you-blinded",
     "description": "Blind test project for the CNAM of Toulon.",
     "autoload": {
+        "psr-4": {
+            "Controllers\\": "src/controllers/",
+            "Models\\": "src/models/",
+            "App\\Repository\\":"src/repository",
+            "App\\Middlewares\\": "src/app/middlewares",
+            "App\\PDO\\": "src/app/PDO"
+        },
         "files": [
             "src/app/config/constants.php",
             "src/app/config/database_config.php",
