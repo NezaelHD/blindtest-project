@@ -8,26 +8,26 @@ CREATE TABLE User (
 );
 
 CREATE TABLE Blindtest (
-                           blindtest_id INT AUTO_INCREMENT PRIMARY KEY,
-                           blindtest_name VARCHAR(255) NOT NULL,
-                           blindtest_description VARCHAR(255),
-                           blindtest_author INT NOT NULL,
-                           CONSTRAINT fk_blindtest_author FOREIGN KEY (blindtest_author) REFERENCES user (id)
+                           id INT AUTO_INCREMENT PRIMARY KEY,
+                           name VARCHAR(255) NOT NULL,
+                           description VARCHAR(255),
+                           author INT NOT NULL,
+                           CONSTRAINT fk_blindtest_author FOREIGN KEY (author) REFERENCES user (id)
 );
 
 CREATE TABLE Blindtestsongs (
-                            blindtestsongs_id INT AUTO_INCREMENT PRIMARY KEY,
-                            blindtestsongs_url VARCHAR(255) NOT NULL,
-                            blindtestsongs_answer VARCHAR(255) NOT NULL,
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            url VARCHAR(255) NOT NULL,
+                            answer VARCHAR(255) NOT NULL,
                             blindtest_id INT NOT NULL,
-                            CONSTRAINT fk_blindtestsongs_blindtest FOREIGN KEY (blindtest_id) REFERENCES blindtest (blindtest_id)
+                            CONSTRAINT fk_blindtestsongs_blindtest_id FOREIGN KEY (blindtest_id) REFERENCES blindtest (id)
 );
 
 CREATE TABLE Scoreboard (
-                            scoreboard_id INT AUTO_INCREMENT PRIMARY KEY,
+                            id INT AUTO_INCREMENT PRIMARY KEY,
                             blindtest_id INT NOT NULL,
                             user_id INT NOT NULL,
-                            scoreboard_score INT NOT NULL,
-                            CONSTRAINT fk_scoreboard_blindtest FOREIGN KEY (blindtest_id) REFERENCES blindtest (blindtest_id),
-                            CONSTRAINT fk_scoreboard_user FOREIGN KEY (user_id) REFERENCES user (id)
+                            score INT NOT NULL,
+                            CONSTRAINT fk_scoreboard_blindtest_id FOREIGN KEY (blindtest_id) REFERENCES blindtest (id),
+                            CONSTRAINT fk_scoreboard_user_id FOREIGN KEY (user_id) REFERENCES user (id)
 );

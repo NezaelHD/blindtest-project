@@ -6,8 +6,28 @@ use Models\Builders\UserBuilder;
 use mysql_xdevapi\Exception;
 use Router;
 
-class User extends Controller
-{
+class User extends Controller {
+
+    public function findAll(){
+        $userRepo = new UserRepository();
+        $users = $userRepo->findAll();
+        $response = [];
+
+        if ($users) {
+            foreach ($users as $user) {
+                $response[] = $user->toArray();
+            }
+            http_response_code(200);
+            echo json_encode($response);
+
+        } else {
+            http_response_code(404);
+            echo json_encode([
+                'error' => 'Utilisateur non trouvé.'
+            ]);
+        }
+    }
+
     public function find(int $id)
     {
         $userRepo = new UserRepository();

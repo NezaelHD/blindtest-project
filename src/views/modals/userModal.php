@@ -1,4 +1,4 @@
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal fade" id="userEditModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,7 +9,7 @@
                 <form id="editForm">
                     <div class="form-group">
                         <label for="name">Nom</label>
-                        <input type="text" class="form-control" id="name" required>
+                        <input type="text" class="form-control" id="userName" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -31,7 +31,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-primary" id="saveChanges">Sauvegarder</button>
+                <button type="button" class="btn btn-primary" id="saveUserChanges">Sauvegarder</button>
             </div>
         </div>
     </div>

@@ -1,25 +1,13 @@
 if (window.location.pathname === "/admin") {
-    const saveChangesBtn = document.getElementById('saveChanges');
-    const editModal = document.getElementById('editModal');
-    const nameInput = document.getElementById('name');
+    const saveChangesBtn = document.getElementById('saveUserChanges');
+    const editModal = document.getElementById('userEditModal');
+    const nameInput = document.getElementById('userName');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const avatarInput = document.getElementById('avatar');
     const isAdminCheckbox = document.getElementById('isAdmin');
 
-    let allButtons = document.querySelectorAll('button');
-    allButtons.forEach(button => {
-        if (button.dataset.type === 'delete') {
-            button.addEventListener('click', () => {
-                deleteUser(button.dataset.param);
-            });
-        } else if (button.dataset.type === 'edit') {
-            button.addEventListener('click', () => {
-                const id = button.dataset.param;
-                openEditModal(id);
-            });
-        }
-    });
+    applyCRUDActions();
 
     saveChangesBtn.addEventListener('click', saveChanges);
     editModal.addEventListener('hidden.bs.modal', resetForm);
@@ -34,7 +22,7 @@ if (window.location.pathname === "/admin") {
             });
     }
 
-    function openEditModal(id) {
+    function openUserEditModal(id) {
         const bootstrapModal = new bootstrap.Modal(editModal);
 
         if (id === 'new') {
@@ -114,8 +102,8 @@ if (window.location.pathname === "/admin") {
                     <td>${data.email}</td>
                     <td>${data.isAdmin}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm" data-type="delete" data-param="${data.id}">Supprimer</button>
-                        <button class="btn btn-primary btn-sm" data-type="edit" data-param="${data.id}">Éditer</button>
+                        <button class="btn btn-danger btn-sm user-modal-extra" data-type="delete" data-param="${data.id}">Supprimer</button>
+                        <button class="btn btn-primary btn-sm user-modal-extra" data-type="edit" data-param="${data.id}">Éditer</button>
                     </td>
                 `;
                     tableBody.appendChild(newRow);
@@ -127,13 +115,12 @@ if (window.location.pathname === "/admin") {
                     <td>${data.email}</td>
                     <td>${data.isAdmin}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm" data-type="delete" data-param="${data.id}">Supprimer</button>
-                        <button class="btn btn-primary btn-sm" data-type="edit" data-param="${data.id}">Éditer</button>
+                        <button class="btn btn-danger btn-sm user-modal-extra" data-type="delete" data-param="${data.id}">Supprimer</button>
+                        <button class="btn btn-primary btn-sm user-modal-extra" data-type="edit" data-param="${data.id}">Éditer</button>
                     </td>
                 `;
                 }
-
-
+                applyCRUDActions(true);
                 const bootstrapModal = bootstrap.Modal.getInstance(editModal);
                 bootstrapModal.hide();
             })
@@ -148,5 +135,24 @@ if (window.location.pathname === "/admin") {
         passwordInput.value = '';
         avatarInput.value = '';
         isAdminCheckbox.checked = false;
+    }
+
+    function applyCRUDActions(isNew = false) {
+        let allButtons = document.querySelectorAll('button.user-modal');
+        if(isNew) {
+            allButtons = document.querySelectorAll('button.user-modal-extra');
+        }
+        allButtons.forEach(button => {
+            if (button.dataset.type === 'delete') {
+                button.addEventListener('click', () => {
+                    deleteUser(button.dataset.param);
+                });
+            } else if (button.dataset.type === 'edit') {
+                button.addEventListener('click', () => {
+                    const id = button.dataset.param;
+                    openUserEditModal(id);
+                });
+            }
+        });
     }
 }

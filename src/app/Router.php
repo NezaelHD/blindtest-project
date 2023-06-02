@@ -113,11 +113,11 @@ class Router {
     }
 
     /**
-     * Check if the given URI matches the route pattern.
-     *
      * @param string $uri
      * @param string $route
      * @return bool
+     *
+     * Check if the given URI matches the route pattern.
      */
     private function isRouteMatch(string $uri, string $route): bool
     {
@@ -129,11 +129,11 @@ class Router {
     }
 
     /**
-     * Extract the route parameters from the URI.
-     *
      * @param string $uri
      * @param string $route
      * @return void
+     *
+     * Extract the route parameters from the URI.
      */
     private function extractRouteParams(string $uri, string $route): void
     {
@@ -147,11 +147,6 @@ class Router {
                 $this->params[$paramName] = $paramValue;
             }
         }
-    }
-
-    public function getParams(): array
-    {
-        return $this->params;
     }
 
     /**
@@ -186,6 +181,9 @@ class Router {
         return $reflectionMethod->invokeArgs($controller, $methodArguments);
     }
 
+    /**
+     * Load all middleware to handle things before the request is processed.
+     */
     private function loadMiddlewares(): void {
         $this->middlewares = array(
             "App\\Middlewares\\".(new ReflectionClass(AuthMiddleware::class))->getShortName(),
@@ -194,7 +192,14 @@ class Router {
         );
     }
 
-    private function handleMiddlewares($uri, $method)
+    /**
+     * @param $uri
+     * @param $method
+     * @return void
+     *
+     * Execute the treatment of all middleware that where loaded.
+     */
+    private function handleMiddlewares($uri, $method): void
     {
         foreach ($this->middlewares as $middleware) {
             $middlewareInstance = new $middleware();
