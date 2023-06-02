@@ -191,4 +191,21 @@ abstract class PDOAbstract implements PDOInterface {
         }
     }
 
+    /**
+     * @param string $column
+     * @param mixed $value
+     *
+     * Function which remove multiple rows based on a column and the value to match
+     */
+    public function removeBy($column, $value)
+    {
+        try {
+            $statement = $this->connection->prepare("DELETE FROM " . $this->getTableName() . " WHERE " . $column . " = :value");
+            $statement->bindParam(':value', $value);
+            $statement->execute();
+        } catch (\ErrorException $e) {
+            dd($e);
+        }
+    }
+
 }
