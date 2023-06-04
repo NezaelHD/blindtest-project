@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand logo" href="#">Are You Blinded?</a>
+    <a class="navbar-brand logo" href=""><img src="../../public/assets/img/logo.png" alt="logo"></a>
+    <p class="navbar-text">Are You Blinded?</p>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
