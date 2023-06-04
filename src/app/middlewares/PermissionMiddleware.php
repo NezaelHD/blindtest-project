@@ -9,7 +9,7 @@ class PermissionMiddleware
         $user = getConnectedUser();
         if (in_array('auth', $permissions)) {
             if (!$user) {
-                redirect('/login');
+                redirect('/login.css');
                 return;
             }
         }

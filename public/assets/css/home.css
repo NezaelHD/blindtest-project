@@ -1,6 +1,14 @@
 .navbar-brand {
     margin-left: 1.5rem;
+}
+.navbar-brand img{
+    height: 60px;
+}
+.navbar-text{
+    color: white !important;
+    font-size: 24px;
     font-weight: bold;
+    text-transform: uppercase;
 }
 .navbar-toggler{
     margin-right: 1rem;
