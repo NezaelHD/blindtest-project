@@ -14,3 +14,7 @@ body{
     color: white !important;
     font-family: 'Rubik', sans-serif;
 }
+
+.modal-content{
+    background-color: #212529 !important;
+}
