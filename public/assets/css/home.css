@@ -1,3 +1,9 @@
+.container {
+    margin-top: 100px;
+}
+nav{
+    margin-bottom: 86px;
+}
 .navbar-brand {
     margin-left: 1.5rem;
 }
@@ -54,6 +60,9 @@
 .custom-bg {
     background-color: #212529 !important;
     color: white;
+}
+#anchor-blindtest{
+    height: 86px;
 }
 #blindtest-cards{
     margin: 50px 20px 20px 20px;

@@ -1,21 +1,4 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand logo" href=""><img src="../../public/assets/img/logo.png" alt="logo"></a>
-    <p class="navbar-text">Are You Blinded?</p>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link btn" href="register">Register</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link btn" href="login">Login</a>
-            </li>
-        </ul>
-    </div>
-</nav>
 <div class="hero">
     <div class="overlay">
         <div class="text">
@@ -23,11 +6,12 @@
                 !</h1>
             <p>Plonge-toi dans l'univers du son avec tes amis</p>
         </div>
-        <a href="#blindtest-cards">
+        <a href="#anchor-blindtest">
             <button type="button" class="btn">Commencer à jouer</button>
         </a>
     </div>
 </div>
+<div id="anchor-blindtest"></div>
 <div id="blindtest-cards">
     <h2>Nos blindtests</h2>
     <p>Commencez immédiatemment à jouer en choisissant un des blindtests disponibles !</p>

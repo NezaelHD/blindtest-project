@@ -12,7 +12,7 @@ class Auth extends Controller
     }
 
     public function loginIndex() {
-        $this->view('login.css');
+        $this->view('login');
     }
 
     public function register() {
@@ -28,7 +28,7 @@ class Auth extends Controller
             else {
                 $user = new User($request['email'], $request['name'], $request['password'] , false, '', -1);
                 $userRepo->persist($user);
-                redirect('/login.css');
+                redirect('/login');
                 exit;
             }
         }
@@ -46,7 +46,7 @@ class Auth extends Controller
                 redirect('/');
             }
             else {
-                $this->view('login.css', ['bad-password' => "Identifiants incorrect."]);
+                $this->view('login', ['bad-password' => "Identifiants incorrect."]);
             }
         }
     }
@@ -69,7 +69,7 @@ class Auth extends Controller
 
         session_destroy();
 
-        redirect('/login.css');
+        redirect('/login');
         exit;
     }
 
