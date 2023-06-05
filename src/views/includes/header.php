@@ -20,10 +20,19 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link btn" href="/profil">Mon Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn" href="/admin">Admin</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link btn" href="/register">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link btn" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Déconnexion</a>
                 </li>
             </ul>
         </div>
