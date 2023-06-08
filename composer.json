@@ -5,6 +5,7 @@
         "psr-4": {
             "Controllers\\": "src/controllers/",
             "Models\\": "src/models/",
+            "Models\\Builders\\": "src/models/builders/",
             "App\\Repository\\":"src/repository",
             "App\\Middlewares\\": "src/app/middlewares",
             "App\\PDO\\": "src/app/PDO"
@@ -23,5 +24,8 @@
             "name": "Nezael"
         }
     ],
-    "require": {}
+    "require": {
+        "ext-pdo": "*",
+        "ext-mysql_xdevapi": "*"
+    }
 }

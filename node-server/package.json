@@ -1,0 +1,16 @@
+{
+  "name": "blindtest-game",
+  "version": "1.0.0",
+  "description": "Websocket server for blindtest game.",
+  "main": "index.js",
+  "author": "Nezael",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "nodemon": "^2.0.22",
+    "ws": "^8.13.0"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  }
+}

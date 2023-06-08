@@ -32,6 +32,12 @@ CREATE TABLE Scoreboard (
                             CONSTRAINT fk_scoreboard_user_id FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
+CREATE TABLE Room (
+                            id CHAR(4) NOT NULL PRIMARY KEY,
+                            blindtest_id INT NOT NULL,
+                            CONSTRAINT fk_room_blindtest_id FOREIGN KEY (blindtest_id) REFERENCES blindtest (id)
+);
+
 CREATE TABLE pwdReset (
                             id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
                             user_email TEXT NOT NULL,
