@@ -12,12 +12,15 @@
     $router->get('users', 'User@findAll');
     $router->get('blindtests', 'Blindtest@findAll');
     $router->get('blindtest/{id}', 'Blindtest@find');
-
+    $router->get('resetPassword', 'Auth@resetPassword');
+    $router->get('createNewPassword', 'Auth@createNewPassword');
 
     $router->post('register', 'Auth@register');
     $router->post('login', 'Auth@login');
     $router->post('user', 'User@create');
     $router->post('blindtest', 'Blindtest@create');
+    $router->post('resetPassword', 'Auth@resetPassword');
+    $router->post('createNewPassword', 'Auth@createNewPasswordTreatment');
 
     $router->delete('user/{id}', 'User@delete');
     $router->delete('blindtest/{id}', 'Blindtest@delete');
