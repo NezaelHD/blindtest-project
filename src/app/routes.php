@@ -7,11 +7,12 @@
     $router->get('register', 'Auth@registerIndex');
     $router->get('login', 'Auth@loginIndex');
     $router->get('logout', 'Auth@logout');
-    $router->get('admin', 'Admin@Index', ['admin']);
+    $router->get('admin', 'Admin@Index', ['admin', 'auth']);
     $router->get('user/{id}', 'User@find');
     $router->get('users', 'User@findAll');
     $router->get('blindtests', 'Blindtest@findAll');
     $router->get('blindtest/{id}', 'Blindtest@find');
+    $router->get('profil', 'Profil@Index',['auth']);
     $router->get('create-room/{id}', 'Room@create');
     $router->get('play/{roomId}', 'Room@join');
     $router->get('scoreboard/{blindtestId}', 'Scoreboard@show');
@@ -21,6 +22,7 @@
     $router->post('login', 'Auth@login');
     $router->post('user', 'User@create');
     $router->post('blindtest', 'Blindtest@create');
+    $router->post('profil', 'Profil@edit',['auth']);
     $router->post('scoreboard', 'Scoreboard@create');
 
     $router->delete('user/{id}', 'User@delete');
