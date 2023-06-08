@@ -42,3 +42,13 @@ services:
     restart: always
     ports:
       - 8080:80
+
+  node:
+    build: './Docker/node'
+    container_name: node
+    restart: always
+    ports:
+      - '3000:3000'
+    volumes:
+      - './node-server:/app'
+    command: sh -c "while :; do npm start; sleep 1; done"
