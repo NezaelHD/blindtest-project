@@ -9,7 +9,6 @@ class Profil extends Controller
     public function Index() {
         $user = getConnectedUser();
         $data = [
-          'title' => 'Are you blinded ?',
           'user' => $user
         ];
 
@@ -33,23 +32,22 @@ class Profil extends Controller
             $errors = $this->validateFormFields($request);
             if (!empty($errors)) {
                 http_response_code(400);
-                echo json_encode($errors);
+                $this->view('profil', $errors);
                 return;
             }
 
             if ($request['password']!= $user->getPassword()) {
-                $Password = password_hash($request['password'], PASSWORD_BCRYPT);
-                // Mettez à jour le mot de passe hashé dans votre logique de mise à jour de l'utilisateur
+                $password = password_hash($request['password'], PASSWORD_BCRYPT);
             }            
             else
-                $Password = $user->getPassword();
+                $password = $user->getPassword();
             
             $userBuilder = new UserBuilder();
             $updatedUser = $userBuilder
                 ->setId($user->getId())
                 ->setName($request['name'])
                 ->setEmail($request['email'])
-                ->setPassword($Password)
+                ->setPassword($password)
                 ->setIsAdmin($user->isAdmin())
                 ->setAvatar($user->getAvatar())
                 ->build();
@@ -59,7 +57,6 @@ class Profil extends Controller
                 
                 http_response_code(200);
                 redirect('/profil');
-                //echo json_encode($updatedUser->toArray());
             } catch (Exception $e) {
                 http_response_code(500);
             }

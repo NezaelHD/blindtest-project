@@ -12,14 +12,14 @@
     $router->get('users', 'User@findAll');
     $router->get('blindtests', 'Blindtest@findAll');
     $router->get('blindtest/{id}', 'Blindtest@find');
-    $router->get('profil', 'Profil@Index');
+    $router->get('profil', 'Profil@Index',['auth']);
 
 
     $router->post('register', 'Auth@register');
     $router->post('login', 'Auth@login');
     $router->post('user', 'User@create');
     $router->post('blindtest', 'Blindtest@create');
-    $router->post('profil', 'Profil@edit');
+    $router->post('profil', 'Profil@edit',['auth']);
 
     $router->delete('user/{id}', 'User@delete');
     $router->delete('blindtest/{id}', 'Blindtest@delete');
