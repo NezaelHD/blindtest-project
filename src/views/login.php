@@ -7,4 +7,5 @@
     <?= $data['bad-password'] ?? ''?>
 </form>
 <a href="/register">J'ai besoin de créer un compte</a>
+<a class="link small" href="/resetPassword">Réinitialiser mot de passe</a>
 <?php  require APPROOT . '/views/includes/footer.php'; ?>

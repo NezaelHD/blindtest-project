@@ -33,7 +33,15 @@ CREATE TABLE Scoreboard (
 );
 
 CREATE TABLE Room (
-                      id CHAR(4) NOT NULL PRIMARY KEY,
-                      blindtest_id INT NOT NULL,
-                      CONSTRAINT fk_room_blindtest_id FOREIGN KEY (blindtest_id) REFERENCES blindtest (id)
+                            id CHAR(4) NOT NULL PRIMARY KEY,
+                            blindtest_id INT NOT NULL,
+                            CONSTRAINT fk_room_blindtest_id FOREIGN KEY (blindtest_id) REFERENCES blindtest (id)
+);
+
+CREATE TABLE pwdReset (
+                            id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+                            user_email TEXT NOT NULL,
+                            selector TEXT NOT NULL,
+                            token LONGTEXT NOT NULL,
+                            expires TEXT NOT NULL
 );
