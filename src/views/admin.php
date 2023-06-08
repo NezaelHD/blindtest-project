@@ -2,7 +2,7 @@
 <div class="container">
     <h2>Page d'Administration</h2>
     <button class="btn btn-primary btn-sm user-modal" data-type="edit" data-param="new">Ajouter</button>
-    <table class="table table-striped table-responsive user-table">
+    <table class="table table-dark table-responsive user-table">
         <thead>
         <tr>
             <th>Id</th>
@@ -20,8 +20,8 @@
             <td><?= $user->getEmail() ?></td>
             <td><?= $user->isAdmin() ? 'true': 'false' ?></td>
             <td>
-                <button class="btn btn-danger btn-sm user-modal" data-type="delete" data-param="<?= $user->getId() ?>">Supprimer</button>
-                <button class="btn btn-primary btn-sm user-modal" data-type="edit" data-param="<?= $user->getId() ?>">Éditer</button>
+                <button class="btn-danger btn-sm user-modal" data-type="delete" data-param="<?= $user->getId() ?>">Supprimer</button>
+                <button class="btn-primary btn-sm user-modal" data-type="edit" data-param="<?= $user->getId() ?>">Éditer</button>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -33,7 +33,7 @@
 
     <h2>Gestion des Blindtests</h2>
     <button class="btn btn-primary btn-sm blind-test-modal" data-type="edit" data-param="new">Ajouter</button>
-    <table class="table table-striped table-responsive blindtest-table">
+    <table class="table table-dark table-responsive blindtest-table">
         <thead>
         <tr>
             <th>Id</th>
@@ -51,8 +51,8 @@
                 <td><?= $blindtest->getAuthor() ?></td>
                 <td><?= $blindtest->getDescription() ?></td>
                 <td>
-                    <button class="btn btn-danger btn-sm blind-test-modal" data-type="delete" data-param="<?= $blindtest->getId() ?>">Supprimer</button>
-                    <button class="btn btn-primary btn-sm blind-test-modal" data-type="edit" data-param="<?= $blindtest->getId() ?>">Éditer</button>
+                    <button class="btn-danger btn-sm blind-test-modal" data-type="delete" data-param="<?= $blindtest->getId() ?>">Supprimer</button>
+                    <button class="btn-primary btn-sm blind-test-modal" data-type="edit" data-param="<?= $blindtest->getId() ?>">Éditer</button>
                 </td>
             </tr>
         <?php endforeach; ?>
