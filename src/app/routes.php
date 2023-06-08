@@ -12,15 +12,20 @@
     $router->get('users', 'User@findAll');
     $router->get('blindtests', 'Blindtest@findAll');
     $router->get('blindtest/{id}', 'Blindtest@find');
+    $router->get('create-room/{id}', 'Room@create');
+    $router->get('play/{roomId}', 'Room@join');
+    $router->get('scoreboard/{blindtestId}', 'Scoreboard@show');
 
 
     $router->post('register', 'Auth@register');
     $router->post('login', 'Auth@login');
     $router->post('user', 'User@create');
     $router->post('blindtest', 'Blindtest@create');
+    $router->post('scoreboard', 'Scoreboard@create');
 
     $router->delete('user/{id}', 'User@delete');
     $router->delete('blindtest/{id}', 'Blindtest@delete');
+    $router->delete('room/{id}', 'Room@delete');
 
     $router->put('user/{id}', 'User@edit');
     $router->put('blindtest/{id}', 'Blindtest@edit');
