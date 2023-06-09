@@ -10,8 +10,25 @@ use App\Repository\UserRepository;
             <p>Plonge-toi dans l'univers du son avec tes amis</p>
         </div>
         <a href="#anchor-blindtest">
-            <button type="button" class="btn">Commencer à jouer</button>
+            <button type="button" class="btn">Découvrir les blindtests</button>
         </a>
+        <a class="roombtn" href="#anchor-room">
+            <button type="button" class="btn">Rejoindre une room</button>
+        </a>
+    </div>
+</div>
+<div id="anchor-room"></div>
+<div class="room">
+    <h2>Rejoindre une room de blindtest</h2>
+    <div class="centered-input">
+        <div class="row">
+            <div class="col-lg-8 col-md-6 col-sm-12">
+                <input type="text" class="form-control inline-form input-lg" id="roomCode" placeholder="Entrez le code">
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <button type="button" id="btn-join" class="btn btn-lg btn-block">Rejoindre</button>
+            </div>
+        </div>
     </div>
 </div>
 <div id="anchor-blindtest"></div>
