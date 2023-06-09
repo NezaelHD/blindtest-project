@@ -61,7 +61,7 @@ class Blindtest extends Controller {
 
             if ($blindtest) {
                 $blindtestBuilder = new BlindtestBuilder();
-                $blindtestBuilder
+                $blindtest = $blindtestBuilder
                     ->setId($blindtest->getId())
                     ->setName($request['name'])
                     ->setDescription($request['description'])
