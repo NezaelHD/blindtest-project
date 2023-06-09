@@ -1,6 +1,5 @@
 <?php  require APPROOT . '/views/includes/header.php'; ?>
-<h1 class="auth__form_title">Profil de <?= $data['user']['name']; ?></h1>
-
+<div class="header_offset"></div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
