@@ -8,11 +8,11 @@
             <div class="modal-body">
                 <form id="blindtestForm">
                     <div class="form-group">
-                        <label for="name">Nom</label>
+                        <label for="blindtestName">Nom</label>
                         <input type="text" class="form-control" id="blindtestName" required>
                     </div>
                     <div class="form-group">
-                        <label for="creator">Description</label>
+                        <label for="description">Description</label>
                         <input type="text" class="form-control" id="description" required>
                     </div>
                     <div class="form-group">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="songList">Liste des chansons</label>
-                        <div id="songList">
+                        <div class="form-control form-control-nobg" id="songList">
                         </div>
                         <button type="button" class="btn btn-primary mt-2" id="addSongBtn">Ajouter une chanson</button>
                     </div>

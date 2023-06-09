@@ -5,16 +5,11 @@ use App\Repository\UserRepository;
 <div class="hero">
     <div class="overlay">
         <div class="text">
-            <h1><?= $data['title']; ?> Mets tes connaissances à l'épreuve avec notre expérience ultime de blind test
-                !</h1>
+            <h1><?= $data['title']; ?> Mets tes connaissances à l'épreuve avec notre expérience ultime de blind test !</h1>
             <p>Plonge-toi dans l'univers du son avec tes amis</p>
         </div>
-        <a href="#anchor-blindtest">
-            <button type="button" class="btn">Découvrir les blindtests</button>
-        </a>
-        <a class="roombtn" href="#anchor-room">
-            <button type="button" class="btn">Rejoindre une room</button>
-        </a>
+        <a href="#anchor-blindtest" class="btn">Découvrir les blindtests</a>
+        <a class="btn roombtn" href="#anchor-room">Rejoindre une room</a>
     </div>
 </div>
 <div id="anchor-room"></div>

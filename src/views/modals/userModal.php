@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <form id="editForm">
                     <div class="form-group">
-                        <label for="name">Nom</label>
+                        <label for="userName">Nom</label>
                         <input type="text" class="form-control" id="userName" required>
                     </div>
                     <div class="form-group">
