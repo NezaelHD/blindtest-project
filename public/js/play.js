@@ -1,10 +1,12 @@
 if (!window.location.toString().includes('play')) {
 } else {
     const gameInstance = document.querySelector('#game-instance');
+    const playerList = document.querySelector('#playerList');
     const serverUrl = 'ws://localhost:3000';
     const roomId = gameInstance.dataset.room_id;
     const blindtestId = gameInstance.dataset.blindtest_id;
     const userId = gameInstance.dataset.user_id;
+    const allPlayers = [];
 
 
     const ws = new WebSocket(`${serverUrl}/${roomId}/${userId}`);
@@ -25,6 +27,27 @@ if (!window.location.toString().includes('play')) {
                     console.log(button.classList.contains("btn"));
 
                     ws.send(new initDTO(roomId, blindtestId).toJSON());
+                    break;
+                case "newPlayer":
+                    datas.userId.forEach(id => {
+                        if(!allPlayers.some(player => player.id === id)) {
+                            fetch('/user/' + id)
+                                .then(response => {
+                                    if (response.ok) {
+                                        return response.json();
+                                    } else {
+                                        throw new Error('Erreur lors de la récupération des données de l\'utilisateur');
+                                    }
+                                })
+                                .then(data => {
+                                    allPlayers.push({'id': data.id, 'name': data.name});
+                                    buildPlayerList();
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        }
+                    });
                     break;
                 case "newQuestion":
                     initializeGameScene();
@@ -84,8 +107,16 @@ if (!window.location.toString().includes('play')) {
             iframe.id = 'youtube-player';
             div.appendChild(iframe);
             gameInstance.appendChild(div);
-
             gameInstance.appendChild(answerContainer);
         }
+    }
+
+    function buildPlayerList(){
+        playerList.innerHTML = "";
+        allPlayers.forEach(player => {
+            let element = document.createElement("li");
+            element.innerHTML = player.name;
+            playerList.appendChild(element);
+        });
     }
 }

@@ -2,5 +2,6 @@
 composer.lock
 /storage
 .idea
-/node-server/node_modules
 /node-server/package-lock.json
+/node-server/node_modules
+/node-server/.env

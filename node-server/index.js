@@ -1,10 +1,12 @@
+require('dotenv').config()
 const WebSocket = require('ws');
 const axios = require('axios');
 const questionDTO = require("./DTO/question");
 const createdDTO = require("./DTO/created");
 const finishedDTO = require("./DTO/finished");
+const joinDTO = require("./DTO/join");
 
-const wss = new WebSocket.Server({ port: 3000 });
+const wss = new WebSocket.Server({ port: process.env.SERVER_PORT });
 const rooms = {};
 
 wss.on('connection', (ws, req) => {
@@ -16,12 +18,14 @@ wss.on('connection', (ws, req) => {
         rooms[roomId].clients.push({'ws': ws, 'userId': userId});
         rooms[roomId].scores.push({'userId': userId, 'score': 0});
         ws.send(JSON.stringify(`Vous êtes connecté à la room ${roomId}`));
+        ws.send(new joinDTO(rooms[roomId].clients.map(elem => elem.userId)).toJSON())
     } else {
         rooms[roomId] = { clients: [{'ws': ws, 'userId': userId}] };
         rooms[roomId].responded = [];
         rooms[roomId].goodResponse = 0;
         rooms[roomId].scores = [{'userId': userId, 'score': 0}];
         rooms[roomId].currentQuestionIndex = 0;
+        ws.send(new joinDTO(rooms[roomId].clients.map(elem => elem.userId)).toJSON())
         ws.send(new createdDTO().toJSON());
     }
 
@@ -32,7 +36,7 @@ wss.on('connection', (ws, req) => {
             case "init":
                let blindtestId = data.blindtestId;
                rooms[roomId].blindtestId = blindtestId;
-               axios.get(`http://app/blindtest/${blindtestId}`)
+               axios.get(`${process.env.CLIENT_URL}/blindtest/${blindtestId}`)
                    .then((response) => {
                        questions = [];
                        response.data.songs.forEach(song => {
@@ -83,13 +87,13 @@ wss.on('connection', (ws, req) => {
                                 scores: rooms[roomId].scores
                             }).then(response => {
                                 rooms[roomId].clients.forEach(client => {
-                                    client.ws.send(new finishedDTO(`http://localhost/scoreboard/${response.data.blindtestId}`).toJSON());
+                                    client.ws.send(new finishedDTO(`${process.env.CLIENT_URL}/scoreboard/${response.data.blindtestId}`).toJSON());
                                 });
                             }).catch(error => {
                                 console.log(error);
                             });
 
-                            axios.delete(`http://app/room/${roomId}`).then(response => {
+                            axios.delete(`${process.env.CLIENT_URL}/room/${roomId}`).then(response => {
                                 console.log(response);
                             });
                         }

@@ -105,8 +105,8 @@ if ((window.location.pathname === "/admin") || (window.location.pathname === "/p
                     <td>${data.author}</td>
                     <td>${data.description}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm blind-test-modal-extra" data-type="delete" data-param="${data.id}">Supprimer</button>
-                        <button class="btn btn-primary btn-sm blind-test-modal-extra" data-type="edit" data-param="${data.id}">Éditer</button>
+                        <button class="btn-danger btn-sm blind-test-modal-extra" data-type="delete" data-param="${data.id}">Supprimer</button>
+                        <button class="btn-primary btn-sm blind-test-modal-extra" data-type="edit" data-param="${data.id}">Éditer</button>
                     </td>
                 `;
                     tableBody.appendChild(newRow);
@@ -118,8 +118,8 @@ if ((window.location.pathname === "/admin") || (window.location.pathname === "/p
                     <td>${data.author}</td>
                     <td>${data.description}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm blind-test-modal-extra" data-type="delete" data-param="${data.id}">Supprimer</button>
-                        <button class="btn btn-primary btn-sm blind-test-modal-extra" data-type="edit" data-param="${data.id}">Éditer</button>
+                        <button class="btn-danger btn-sm blind-test-modal-extra" data-type="delete" data-param="${data.id}">Supprimer</button>
+                        <button class="btn-primary btn-sm blind-test-modal-extra" data-type="edit" data-param="${data.id}">Éditer</button>
                     </td>
                 `;
                 }
