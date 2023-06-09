@@ -11,6 +11,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+<?php
+    $connectedUser = getConnectedUser();
+?>
 <header class="fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand logo" href="/"><img src="../../public/assets/img/logo.png" alt="logo"></a>
@@ -20,21 +23,29 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link btn" href="/profil">Mon Profil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn" href="/admin">Admin</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn" href="/register">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Déconnexion</a>
-                </li>
+                <?php if (!$connectedUser) : // Not connected ?>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="/register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="/login">Login</a>
+                    </li>
+                <?php endif; ?>
+                <?php if ($connectedUser) : // Connected but not admin ?>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="/profil">Mon Profil</a>
+                    </li>
+                <?php endif; ?>
+                <?php  if ($connectedUser && $connectedUser['isAdmin']) : // Connected and admin ?>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="/admin">Admin</a>
+                    </li>
+                <?php endif; ?>
+                <?php if ($connectedUser) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Déconnexion</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </nav>

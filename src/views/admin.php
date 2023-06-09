@@ -1,4 +1,5 @@
 <?php  require APPROOT . '/views/includes/header.php'; ?>
+<div class="header_offset"></div>
 <div class="container">
     <h2>Page d'Administration</h2>
     <button class="btn btn-primary btn-sm user-modal" data-type="edit" data-param="new">Ajouter</button>

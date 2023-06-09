@@ -1,0 +1,16 @@
+.header_offset{
+    height: 100px;
+}
+
+.container-scoreboard{
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.5rem;
+    background: #212529;
+    border: 1px solid #bb86fc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.scoreboard-title{
+    margin: 50px 20px 20px 20px;
+    text-align: center;
+}

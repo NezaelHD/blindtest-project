@@ -1,4 +1,4 @@
-if (window.location.pathname === "/admin") {
+if ((window.location.pathname === "/admin") || (window.location.pathname === "/profil")) {
     const saveChangesBtn = document.getElementById('saveBlindtestChanges');
     const blindtestModal = document.getElementById('blindtestEditModal');
     const nameInput = document.getElementById('blindtestName');
