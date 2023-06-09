@@ -1,0 +1,25 @@
+div.room-container.flex {
+    min-width: 280px;
+    max-width: 1000px;
+    left      : 50%;
+    top       : 50%;
+    position  : absolute;
+    transform : translate(-50%, -50%);
+}
+
+.container{
+    margin-top: 0px;
+}
+
+.flex-content{
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.5rem;
+    background: #212529;
+    border: 1px solid #bb86fc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+
+.room-title, .container{
+    text-align: center;
+}

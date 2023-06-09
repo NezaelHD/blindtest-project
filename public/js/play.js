@@ -17,8 +17,13 @@ if (!window.location.toString().includes('play')) {
                 case "created":
                     let button = document.createElement("button");
                     button.innerHTML = "Lancer le blindtest";
+                    button.classList.add("btn");
+                    button.classList.add("startbtn");
                     button.addEventListener("click", startGame);
                     gameInstance.appendChild(button);
+
+                    console.log(button.classList.contains("btn"));
+
                     ws.send(new initDTO(roomId, blindtestId).toJSON());
                     break;
                 case "newQuestion":
@@ -60,9 +65,12 @@ if (!window.location.toString().includes('play')) {
             answerContainer.id = "answer-container";
             let input = document.createElement("input");
             input.setAttribute("type", "text");
+            input.classList.add("form-control");
             input.id="blindtest-answer";
             let button = document.createElement("button");
             button.addEventListener("click", sendAnswer);
+            button.classList.add("btn");
+            button.classList.add("sendbtn");
             button.innerHTML = "Envoyer";
             answerContainer.appendChild(input);
             answerContainer.appendChild(button);

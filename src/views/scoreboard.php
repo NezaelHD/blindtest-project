@@ -1,7 +1,8 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
-    <h1>Page des scores</h1>
+    <div class="header_offset"></div>
+    <h1 class="scoreboard-title">Page des scores</h1>
     <div class="container">
-        <table class="table">
+        <table class="table table-dark table-responsive">
             <thead>
             <tr>
                 <th>ID</th>
