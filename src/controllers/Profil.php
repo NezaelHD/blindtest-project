@@ -2,14 +2,18 @@
 namespace Controllers;
 use App\Repository\UserRepository;
 use Models\Builders\UserBuilder;
+use App\Repository\BlindtestRepository;
 use Models\User;
 
 class Profil extends Controller
 {
     public function Index() {
+
+        $blindtestRepo = new BlindtestRepository();
         $user = getConnectedUser();
         $data = [
-          'user' => $user
+          'user' => $user,
+          'blindtests' => $blindtestRepo->findAll()
         ];
 
         $this->view('profil', $data);
