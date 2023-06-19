@@ -12,7 +12,7 @@ class RoomRepository extends PDOAbstract
         parent::__construct(
             "INSERT INTO Room (id, blindtest_id)
                       SELECT :new_id, :blindtest_id FROM dual
-                      WHERE :new_id NOT IN (SELECT id FROM room)
+                      WHERE :new_id NOT IN (SELECT id FROM Room)
                       LIMIT 1",
             "UPDATE Room SET blindtest_id=:blindtestId WHERE id=:id"
         );

@@ -10,8 +10,8 @@ class BlindtestSongsRepository extends PDOAbstract
     public function __construct()
     {
         parent::__construct(
-            "INSERT INTO BlindtestSongs(url, answer, blindtest_id) VALUES (:url, :answer, :blindtestId)",
-            "UPDATE BlindtestSongs SET url=:url, answer=:answer, blindtest_id=:blindtestId WHERE id=:id"
+            "INSERT INTO Blindtestsongs(url, answer, blindtest_id) VALUES (:url, :answer, :blindtestId)",
+            "UPDATE Blindtestsongs SET url=:url, answer=:answer, blindtest_id=:blindtestId WHERE id=:id"
         );
     }
 

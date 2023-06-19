@@ -47,7 +47,7 @@ use App\Repository\UserRepository;
                     <h5 class="card-title"><?= $blindtestuser['blindtest']->getName(); ?></h5>
                     <p class="card-text">Créateur: <?= $blindtestuser['author']->getName(); ?></p>
                     <p class="card-description"><?= $blindtestuser['blindtest']->getDescription(); ?></p>
-                    <a href="#" class="btn btn-primary">Jouer</a>
+                    <a href="/create-room/<?= $blindtestuser['blindtest']->getId()?>" class="btn btn-primary">Jouer</a>
                 </div>
             </div>
         </div>

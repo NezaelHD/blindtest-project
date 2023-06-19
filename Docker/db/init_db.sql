@@ -12,7 +12,7 @@ CREATE TABLE Blindtest (
                            name VARCHAR(255) NOT NULL,
                            description VARCHAR(255),
                            author INT NOT NULL,
-                           CONSTRAINT fk_blindtest_author FOREIGN KEY (author) REFERENCES user (id)
+                           CONSTRAINT fk_blindtest_author FOREIGN KEY (author) REFERENCES User (id)
 );
 
 CREATE TABLE Blindtestsongs (
@@ -20,7 +20,7 @@ CREATE TABLE Blindtestsongs (
                             url VARCHAR(255) NOT NULL,
                             answer VARCHAR(255) NOT NULL,
                             blindtest_id INT NOT NULL,
-                            CONSTRAINT fk_blindtestsongs_blindtest_id FOREIGN KEY (blindtest_id) REFERENCES blindtest (id)
+                            CONSTRAINT fk_blindtestsongs_blindtest_id FOREIGN KEY (blindtest_id) REFERENCES Blindtest (id)
 );
 
 CREATE TABLE Scoreboard (
@@ -28,14 +28,14 @@ CREATE TABLE Scoreboard (
                             blindtest_id INT NOT NULL,
                             user_id INT NOT NULL,
                             score INT NOT NULL,
-                            CONSTRAINT fk_scoreboard_blindtest_id FOREIGN KEY (blindtest_id) REFERENCES blindtest (id),
-                            CONSTRAINT fk_scoreboard_user_id FOREIGN KEY (user_id) REFERENCES user (id)
+                            CONSTRAINT fk_scoreboard_blindtest_id FOREIGN KEY (blindtest_id) REFERENCES Blindtest (id),
+                            CONSTRAINT fk_scoreboard_user_id FOREIGN KEY (user_id) REFERENCES User (id)
 );
 
 CREATE TABLE Room (
                             id CHAR(4) NOT NULL PRIMARY KEY,
                             blindtest_id INT NOT NULL,
-                            CONSTRAINT fk_room_blindtest_id FOREIGN KEY (blindtest_id) REFERENCES blindtest (id)
+                            CONSTRAINT fk_room_blindtest_id FOREIGN KEY (blindtest_id) REFERENCES Blindtest (id)
 );
 
 CREATE TABLE pwdReset (
